@@ -8,6 +8,7 @@ package ws.c.project1;
  *
  * @author Asus
  */
-public class Controller {
+@org.springframework.stereotype.Controller
+public class myController {
     
 }
