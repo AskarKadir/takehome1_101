@@ -4,6 +4,7 @@
  */
 package ws.c.project1;
 
+import java.text.Format;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,18 +21,36 @@ public class myController {
     public String olahData(
             @RequestParam(value = "namabarang")String Newnamabarang,
             @RequestParam(value = "jumlahbarang") String Newjumlahbarang,
-            @RequestParam(value = "totalharga") String Newtotalharga,
+            @RequestParam(value = "hargabarang") String Newhargabarang,
             Model model)
     {
-        String total;
+        String total = "";
+        String diskon= "";
         if (Newjumlahbarang.isEmpty() && 
                 Newnamabarang.isEmpty() && 
-                Newtotalharga.isEmpty())
+                Newhargabarang.isEmpty())
         {
             return "dataeror";
-        }else{
-            
         }
+        else{
+            total = String.valueOf(Double.parseDouble(Newjumlahbarang) * 
+                    Double.parseDouble(Newhargabarang));
+            if (Double.parseDouble(total) < 10000 ) {
+                diskon = "0";
+                total = String.valueOf(Double.parseDouble(total) - (Double.parseDouble(total) *  Double.parseDouble(diskon)/100));
+            }else if (Double.parseDouble(total) >= 10000){
+                diskon = "5";
+                total = String.valueOf(Double.parseDouble(total) - (Double.parseDouble(total) *  Double.parseDouble(diskon)/100));
+            }else if (Double.parseDouble(total) >= 50000){
+                diskon = "10";
+                total = String.valueOf(Double.parseDouble(total) - (Double.parseDouble(total) *  Double.parseDouble(diskon)/100));
+            }
+        }
+        model.addAttribute("getnamabarang",Newnamabarang);
+        model.addAttribute("getjumlah", Newjumlahbarang);
+        model.addAttribute("getharga", Newhargabarang);
+        model.addAttribute("getdiskon", String.format("%s%%", diskon));
+        model.addAttribute("gettotalharga", total);
         return "pembayaran";
     }
 }
