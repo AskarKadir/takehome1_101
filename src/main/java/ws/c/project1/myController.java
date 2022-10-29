@@ -38,7 +38,7 @@ public class myController {
             if (Double.parseDouble(total) < 10000 ) {
                 diskon = "0";
                 total = String.valueOf(Double.parseDouble(total) - (Double.parseDouble(total) *  Double.parseDouble(diskon)/100));
-            }else if (Double.parseDouble(total) >= 10000){
+            }else if (Double.parseDouble(total) >= 10000 && Double.parseDouble(total) < 50000){
                 diskon = "5";
                 total = String.valueOf(Double.parseDouble(total) - (Double.parseDouble(total) *  Double.parseDouble(diskon)/100));
             }else if (Double.parseDouble(total) >= 50000){
