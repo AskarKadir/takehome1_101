@@ -21,6 +21,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 font-weight: normal;
                 display: inline-block;
             }
+            .footer {
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                background-color: aqua;
+                color: white;
+                text-align: center;
+              }
         </style>
     </head>
     <body>
@@ -48,6 +57,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <p th:text="${getharga}"/>
             <p th:text="${getdiskon}"/>
             <p th:text="${gettotalharga}"/>
+        </div>
+        <div class="footer">
+            <p>Created by Askar Kadir</p>
         </div>
     </body>
 </html>
